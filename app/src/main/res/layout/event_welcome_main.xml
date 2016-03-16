@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.1"
+                android:text="FINE WHITE SAND AND CRYSTAL CLEAR WATERS"
+                android:textColor="@color/grey_dark"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title"
+                android:layout_marginTop="10dp"
+                android:letterSpacing="0.1"
+                android:text="Welcome to The Cotton Beach Club.
+
+Description. - located above the Cala Tarida Beach 13.3 miles (21.4 km) west of the Ibiza town. The nearest village of Santa Agnès de Corona is 5.2 miles (8.4 km) east of the beach club.
+
+Opening hours
+Monday - Sunday from 10am to 2am"
+                android:textColor="@color/grey"
+                android:textSize="12dp" />
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/info_layout"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/img_event_demo"/>
+
+</RelativeLayout>

@@ -1,4 +1,19 @@
 <resources>
-    <string name="app_name">cotton</string>
+    <string name="app_name">Cotton</string>
     <string name="action_settings">Settings</string>
+    <string name="beach_club">BEACH CLUB</string>
+    <string name="lounge_club">LOUNGE CLUB</string>
+    <string name="hotel">HOTEL</string>
+
+
+
+    <string name="upcoming_events">UPCOMING EVENTS</string>
+    <string name="book_now">Book now</string>
+
+    <string name="welcome">WELCOME</string>
+    <string name="gallery">GALLERY</string>
+    <string name="reservations">RESERVATIONS</string>
+    <string name="location">LOCATOIN</string>
+    <string name="menu">MENU</string>
+    <string name="events">EVENTS</string>
 </resources>
