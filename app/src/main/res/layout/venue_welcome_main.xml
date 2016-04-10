@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp">
+
+
+        <com.cotton.ui.AvenirTextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="0.1"
+            android:text="FINE WHITE SAND AND CRYSTAL CLEAR WATERS"
+            android:textColor="@color/grey_dark"
+            android:textSize="16dp" />
+
+        <RelativeLayout
+            android:id="@+id/border"
+            android:layout_width="50dp"
+            android:layout_height="1dp"
+            android:layout_below="@+id/title"
+            android:layout_marginTop="5dp"
+            android:background="@color/grey_dark"></RelativeLayout>
+
+        <com.cotton.ui.AvenirTextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/border"
+            android:layout_marginTop="15dp"
+            android:letterSpacing="0.1"
+            android:text="Welcome to The Cotton Beach Club.
+
+Description. - located above the Cala Tarida Beach 13.3 miles (21.4 km) west of the Ibiza town. The nearest village of Santa Agnès de Corona is 5.2 miles (8.4 km) east of the beach club."
+            android:textColor="@color/grey"
+            android:textSize="12dp" />
+
+        <com.cotton.ui.AvenirTextView
+            android:id="@+id/title_hours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/description"
+            android:layout_marginTop="15dp"
+            android:letterSpacing="0.1"
+            android:text="@string/opening_hours"
+            android:textColor="@color/grey_dark"
+            android:textSize="12dp" />
+
+        <com.cotton.ui.AvenirTextView
+            android:id="@+id/hours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title_hours"
+            android:letterSpacing="0.1"
+            android:text="Monday Sundat from 7 to 10pm"
+            android:textColor="@color/grey"
+            android:textSize="12dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/info_layout"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder_video" />
+
+        <ImageView
+            android:id="@+id/play_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/play_button" />
+    </RelativeLayout>
+</RelativeLayout>

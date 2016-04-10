@@ -9,11 +9,31 @@
 
     <string name="upcoming_events">UPCOMING EVENTS</string>
     <string name="book_now">Book now</string>
+    <!-- Camera -->
+    <string name="done">DONE</string>
+    <string name="saved1">Saved on your</string>
+    <string name="saved2">camera roll</string>
+    <string name="share_on">Share on</string>
+    <string name="instagram">Instagram</string>
+    <string name="facebook">Facebook</string>
+    <string name="close">CLOSE</string>
+    <!--Venue -->
 
     <string name="welcome">WELCOME</string>
     <string name="gallery">GALLERY</string>
     <string name="reservations">RESERVATIONS</string>
-    <string name="location">LOCATOIN</string>
+    <string name="location">LOCATION</string>
     <string name="menu">MENU</string>
     <string name="events">EVENTS</string>
+
+    <string name="opening_hours">Opening hours</string>
+    <string name="online_booking">Online booking</string>
+    <string name="book_online">Book online</string>
+    <string name="phone_booking">Phone booking</string>
+
+    <string name="wines">WINES</string>
+    <string name="cocktails">COCKTAILS</string>
+
+    <string name="cannot">Cannot</string>
+
 </resources>

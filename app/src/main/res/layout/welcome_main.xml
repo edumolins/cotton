@@ -31,13 +31,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp">
 
-        <TextView
+        <com.cotton.ui.AvenirTextView
             android:id="@+id/beach_club"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:letterSpacing="0.1"
             android:text="@string/beach_club"
-            android:textColor="@color/white"
+            android:textColor="@color/text_selected"
             android:textSize="18dp" />
 
         <RelativeLayout
@@ -45,7 +45,7 @@
             android:layout_height="1dp"
             android:layout_below="@+id/beach_club"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="12dp"
             android:background="@color/white" />
     </RelativeLayout>
 
@@ -55,15 +55,15 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/layout1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="7dp">
+        android:layout_marginTop="12dp">
 
-        <TextView
+        <com.cotton.ui.AvenirTextView
             android:id="@+id/lounge_club"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:letterSpacing="0.1"
             android:text="@string/lounge_club"
-            android:textColor="@color/white"
+            android:textColor="@color/text_selected"
             android:textSize="18dp" />
 
         <RelativeLayout
@@ -71,7 +71,7 @@
             android:layout_height="1dp"
             android:layout_below="@+id/lounge_club"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="12dp"
             android:background="@color/white" />
     </RelativeLayout>
 
@@ -81,15 +81,15 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/layout2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="7dp">
+        android:layout_marginTop="12dp">
 
-        <TextView
+        <com.cotton.ui.AvenirTextView
             android:id="@+id/hotel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:letterSpacing="0.1"
             android:text="@string/hotel"
-            android:textColor="@color/white"
+            android:textColor="@color/text_selected"
             android:textSize="18dp" />
 
     </RelativeLayout>

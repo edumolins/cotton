@@ -4,9 +4,12 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="white">#FFF</color>
-    <color name="translucid_white">#BBFFFFFF</color>
+    <color name="translucid_white">#55FFFFFF</color>
+    <color name="translucid_black">#BB000000</color>
+    <color name="translucid_grey">#DDCACACA</color>
     <color name="black">#000</color>
     <color name="blue">#0060D9</color>
     <color name="grey_dark">#4A4A4A</color>
+    <color name="grey_location">#545454</color>
     <color name="grey">#CACACA</color>
 </resources>

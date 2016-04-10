@@ -14,6 +14,19 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="TabTheme" parent="TabTheme.Base">
+
+    </style>
+
+    <style name="TabTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorAccent">@color/white</item>
+        <!-- <item name="colorPrimary">@color/translucid_white</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/white</item> -->
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

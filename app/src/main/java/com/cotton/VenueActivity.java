@@ -1,200 +1,122 @@
 package com.cotton;
 
-import android.app.ActionBar;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.ViewGroup;
 
+import com.cotton.fragments.VenueEventsFragment;
+import com.cotton.fragments.VenueGalleryFragment;
+import com.cotton.fragments.VenueLocationFragment;
+import com.cotton.fragments.VenueMenuFragment;
+import com.cotton.fragments.VenueReservationsFragment;
+import com.cotton.fragments.VenueWelcomeFragment;
+import com.cotton.ui.AvenirTabLayout;
 
-public class VenueActivity extends FragmentActivity implements ActionBar.TabListener {
+import java.util.ArrayList;
+import java.util.List;
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide fragments for each of the
-     * three primary sections of the app. We use a {@link android.support.v4.app.FragmentPagerAdapter}
-     * derivative, which will keep every loaded fragment in memory. If this becomes too memory
-     * intensive, it may be best to switch to a {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
-    AppSectionsPagerAdapter mAppSectionsPagerAdapter;
+public class VenueActivity extends AppCompatActivity {
 
-    /**
-     * The {@link ViewPager} that will display the three primary sections of the app, one at a
-     * time.
-     */
-    ViewPager mViewPager;
+    private Toolbar toolbar;
+    private AvenirTabLayout tabLayout;
+    private ViewPager viewPager;
 
-    public void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.venue_main);
-        // Create the adapter that will return a fragment for each of the three primary sections
-        // of the app.
-        mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager());
 
-        // Set up the action bar.
-        final ActionBar actionBar = getActionBar();
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        // Specify that the Home/Up button should not be enabled, since there is no hierarchical
-        // parent.
-        actionBar.setHomeButtonEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // Specify that we will be displaying tabs in the action bar.
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        //mScrollView = (NestedScrollView) findViewById(R.id.scrollView);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
 
-        // Set up the ViewPager, attaching the adapter and setting up a listener for when the
-        // user swipes between sections.
-        mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.setAdapter(mAppSectionsPagerAdapter);
-        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        tabLayout = (AvenirTabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
+        toolbar.setVisibility(View.GONE);
+        //actionBar.setDisplayShowHomeEnabled(false);
+        /*viewPager.setOnTouchListener(new View.OnTouchListener() {
+
+            int dragthreshold = 30;
+            int downX;
+            int downY;
+
             @Override
-            public void onPageSelected(int position) {
-                // When swiping between different app sections, select the corresponding tab.
-                // We can also use ActionBar.Tab#select() to do this if we have a reference to the
-                // Tab.
-                actionBar.setSelectedNavigationItem(position);
+            public boolean onTouch(View v, MotionEvent event) {
+
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        downX = (int) event.getRawX();
+                        downY = (int) event.getRawY();
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        int distanceX = Math.abs((int) event.getRawX() - downX);
+                        int distanceY = Math.abs((int) event.getRawY() - downY);
+
+                        if (distanceY > distanceX && distanceY > dragthreshold) {
+                            viewPager.getParent().requestDisallowInterceptTouchEvent(false);
+                            mScrollView.getParent().requestDisallowInterceptTouchEvent(true);
+                        } else if (distanceX > distanceY && distanceX > dragthreshold) {
+                            viewPager.getParent().requestDisallowInterceptTouchEvent(true);
+                            mScrollView.getParent().requestDisallowInterceptTouchEvent(false);
+                        }
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        mScrollView.getParent().requestDisallowInterceptTouchEvent(false);
+                        viewPager.getParent().requestDisallowInterceptTouchEvent(false);
+                        break;
+                }
+                return false;
             }
-        });
-
-        // For each of the sections in the app, add a tab to the action bar.
-        for (int i = 0; i < mAppSectionsPagerAdapter.getCount(); i++) {
-            // Create a tab with text corresponding to the page title defined by the adapter.
-            // Also specify this Activity object, which implements the TabListener interface, as the
-            // listener for when this tab is selected.
-            actionBar.addTab(
-                    actionBar.newTab()
-                            .setText(mAppSectionsPagerAdapter.getPageTitle(i))
-                            .setTabListener(this));
-        }
+        });*/
     }
 
-    @Override
-    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new VenueWelcomeFragment(), getString(R.string.welcome));
+        adapter.addFragment(new VenueGalleryFragment(), getString(R.string.gallery));
+        adapter.addFragment(new VenueReservationsFragment(), getString(R.string.reservations));
+        adapter.addFragment(new VenueLocationFragment(), getString(R.string.location));
+        adapter.addFragment(new VenueMenuFragment(), getString(R.string.menu));
+        adapter.addFragment(new VenueEventsFragment(), getString(R.string.events));
+        viewPager.setAdapter(adapter);
     }
 
-    @Override
-    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-        // When the given tab is selected, switch to the corresponding page in the ViewPager.
-        mViewPager.setCurrentItem(tab.getPosition());
-    }
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
 
-    @Override
-    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-    }
-
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to one of the primary
-     * sections of the app.
-     */
-    public class AppSectionsPagerAdapter extends FragmentPagerAdapter {
-
-        public AppSectionsPagerAdapter(FragmentManager fm) {
-            super(fm);
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
         }
 
         @Override
-        public Fragment getItem(int i) {
-            switch (i) {
-                case 0:
-                    // The first section of the app is the most interesting -- it offers
-                    // a launchpad into the other demonstrations in this example application.
-                    return new LaunchpadSectionFragment();
-
-                default:
-                    // The other sections of the app are dummy placeholders.
-                    Fragment fragment = new DummySectionFragment();
-                    Bundle args = new Bundle();
-                    args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, i + 1);
-                    fragment.setArguments(args);
-                    return fragment;
-            }
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
         }
 
         @Override
         public int getCount() {
-            return 6;
+            return mFragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            String title="Section";
-            if (position == 0) {
-                title = getApplicationContext().getString(R.string.welcome);
-            } else if (position == 1) {
-                title = getApplicationContext().getString(R.string.gallery);
-            } else if (position == 2) {
-                title = getApplicationContext().getString(R.string.reservations);
-            }else if (position == 3) {
-                title = getApplicationContext().getString(R.string.location);
-            }else if (position == 4) {
-                title = getApplicationContext().getString(R.string.menu);
-            }else if (position == 5) {
-                title = getApplicationContext().getString(R.string.events);
-            }
-            return title;
-        }
-    }
-
-    /**
-     * A fragment that launches other parts of the demo application.
-     */
-    public static class LaunchpadSectionFragment extends Fragment {
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.event_welcome_main, container, false);
-/*
-            // Demonstration of a collection-browsing activity.
-            rootView.findViewById(R.id.demo_collection_button)
-                    .setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(getActivity(), CollectionDemoActivity.class);
-                            startActivity(intent);
-                        }
-                    });
-
-            // Demonstration of navigating to external activities.
-            rootView.findViewById(R.id.demo_external_activity)
-                    .setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            // Create an intent that asks the user to pick a photo, but using
-                            // FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET, ensures that relaunching
-                            // the application from the device home screen does not return
-                            // to the external activity.
-                            Intent externalActivityIntent = new Intent(Intent.ACTION_PICK);
-                            externalActivityIntent.setType("image/*");
-                            externalActivityIntent.addFlags(
-                                    Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-                            startActivity(externalActivityIntent);
-                        }
-                    });
-*/
-            return rootView;
-        }
-    }
-
-    /**
-     * A dummy fragment representing a section of the app, but that simply displays dummy text.
-     */
-    public static class DummySectionFragment extends Fragment {
-
-        public static final String ARG_SECTION_NUMBER = "section_number";
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.event_location_main, container, false);
-            //Bundle args = getArguments();
-            //((TextView) rootView.findViewById(android.R.id.text1)).setText(
-            //        getString(R.string.hotel, args.getInt(ARG_SECTION_NUMBER)));
-            return rootView;
+            return mFragmentTitleList.get(position);
         }
     }
 }
